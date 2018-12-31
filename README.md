@@ -6,6 +6,10 @@ Unlike many other fantastic tools for Clash of Clans, this project seeks to prov
 
 As the name implies, ClashKudos also strives to offer another benefit: **kudos**. Positive reinforcement can provide significant value for a clan; encouraging others to compete in more ways helps also helps showcase the strengths of different players and unify a team under a broader umbrella.
 
+### Features
+1. Periodic notifications of the player with the highest donaitons.
+2. 
+
 ### Installing
 Currently, the functionality is being massively refactored from the concept's initial inception and is not ready for public consumption.
 

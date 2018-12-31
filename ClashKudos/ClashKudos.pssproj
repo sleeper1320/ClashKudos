@@ -42,7 +42,9 @@
     <Compile Include="Tests\PlayerFetch.tests.ps1" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="README.md" />
+    <Content Include="..\README.md">
+      <Link>README.md</Link>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="Build" />
