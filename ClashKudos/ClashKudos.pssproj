@@ -27,7 +27,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="Tasks\" />
     <Folder Include="Tests\" />
   </ItemGroup>
   <ItemGroup>
@@ -41,9 +40,6 @@
     <Compile Include="Tests\SC API.tests.ps1" />
     <Compile Include="PlayerFetch.psm1" />
     <Compile Include="Tests\PlayerFetch.tests.ps1" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="README.md" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="Build" />
