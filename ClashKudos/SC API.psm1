@@ -66,6 +66,8 @@ function Invoke-SCAPICall {
         At the moment, errors received when calling the API are passed to the calling
         function. Future revisions of this function may handle errors internally.
 
+        This function does self rate limit to avoid some errors.
+
     .PARAMETER uri
         A valid, complete URI to the desired resource.
 
@@ -115,6 +117,9 @@ function Invoke-SCAPICall {
     $headers = @{}
     $headers.Add('Accept', 'application/json')
     $headers.Add('authorization', "Bearer $token")
+
+    #Lazy rate limiting. Forces no more than 8 requests a second.
+    Start-Sleep -Milliseconds 125
 
     (Invoke-WebRequest -Headers $headers -Uri $uri).Content |ConvertFrom-Json
 }

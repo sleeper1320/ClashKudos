@@ -94,6 +94,7 @@ InModuleScope 'SC API' {
             it 'should run through the core functions' {
                 Mock 'Get-SCToken' {'PretendToken'} -Verifiable
                 Mock 'Invoke-WebRequest' {} -Verifiable
+                Mock 'Start-Sleep' {} -Verifiable #Mock this to speed up tests.
 
                 Invoke-SCAPICall -Uri 'http://someuri.com'
 
