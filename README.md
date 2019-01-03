@@ -6,9 +6,10 @@ Unlike many other fantastic tools for Clash of Clans, this project seeks to prov
 
 As the name implies, ClashKudos also strives to offer another benefit: **kudos**. Positive reinforcement can provide significant value for a clan; encouraging others to compete in more ways helps also helps showcase the strengths of different players and unify a team under a broader umbrella.
 
-### Features
-1. Periodic notifications of the player with the highest donaitons.
-2. 
+### Features (Planned for v1.0)
+1. Discord webhook notification of the player with the highest daily donaitons.
+2. Notifications for those who reached the maximum possible score in Clan Games.
+3. End of season tracking donation tracking.
 
 ### Installing
 Currently, the functionality is being massively refactored from the concept's initial inception and is not ready for public consumption.
@@ -17,9 +18,12 @@ Currently, the functionality is being massively refactored from the concept's in
 The current development environment for this project
 * [Visual Studio 2017](https://visualstudio.microsoft.com/) - IDE. VS Code should work well.
 * [Git Plugin for VS](https://visualstudio.github.com/) - Plugin to integrate Git with Visual Studio
-* [Pester](https://github.com/pester/Pester) - Currently using 4.4.2
+* [PowerShell 5.0 (via WMF 5.0)](https://www.microsoft.com/en-us/download/details.aspx?id=50395) - Newer versions should work as well.
 
 ### Testing
+For testing, the following tool(s) are used:
+* [Pester](https://github.com/pester/Pester) - Currently using 4.4.2
+
 If the environment is initialized correctly, the unit tests should run automatically once a change is detected. 
 
 To run all tests manually, select Test > Run > All Tests
