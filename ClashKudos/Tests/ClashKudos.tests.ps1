@@ -47,6 +47,7 @@ Describe "Module Manifest" {
         $files = @(
             Get-ChildItem $root | where {$_.Extension -in ('.ps1')}
             Get-ChildItem (Join-Path $root '..') | where {$_.Extension -in ('.ps1','.psm1','.psd1')}
+            Get-ChildItem (Join-Path $root '..' | Join-Path -ChildPath 'Tasks') | where {$_.Extension -in ('.ps1')}
         )
 
         it 'All public funcitons use cmdletbinding()' {
