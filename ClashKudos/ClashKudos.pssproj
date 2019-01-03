@@ -35,6 +35,8 @@
     <Compile Include="Config.psm1" />
     <Compile Include="Discord.psm1" />
     <Compile Include="SC API.psm1" />
+    <Compile Include="Tasks\TestToken.ps1" />
+    <Compile Include="Tasks\TestTokenIP.ps1" />
     <Compile Include="Tasks\UpdatePlayerData.ps1" />
     <Compile Include="Tests\ClashKudos.tests.ps1" />
     <Compile Include="Tests\Config.tests.ps1" />
