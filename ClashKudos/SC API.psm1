@@ -75,9 +75,9 @@ function Invoke-SCAPICall {
         System.String
 
     .OUTPUTS
-        System.PSObject
+        System.Management.Automation.PSCustomObject
 
-        A PSCustomObject from the converted JSON response.
+        The converted JSON response.
 
     .LINK
         Get-SCToken
@@ -138,7 +138,7 @@ function Set-SCToken {
         The token value to store.
 
     .INPUTS
-        System.Object
+        System.String
 
     .OUTPUTS
         None
@@ -179,7 +179,7 @@ function Set-SCTokenIP {
                 or may not actually support IPv6.
 
     .INPUTS
-        System.Object
+        System.String
 
     .OUTPUTS
         None
