@@ -2,15 +2,64 @@
  # Functions to support Clash Kudos interaction with local saved configs.
  #>
 
+function Get-KudosClanTags {
+    <#
+    .SYNOPSIS
+        Retrieves the list of clans in the config file.
+
+    .DESCRIPTION
+        Upon first call this function (or any of the linked functions), this
+        function will load the config file from either the location specified
+        by the 'config' hash entry in PrivateData or the  default location
+        (./kudos.config) if a specified location is not found.
+
+        Once loaded and for ever subsequent call after that, the data is saved
+        in memory. At this time, there is no way to reload an updated config
+        without reloading the entire module.
+
+    .INPUTS
+        None
+
+    .OUTPUTS
+        New-Object System.Collections.ArrayList
+        An ArrayList of PSCustomObjects containing the clans and their tags.
+
+    .LINK
+        Get-KudosClanSettings
+
+    .LINK
+        Get-KudosGlobalSettings
+     #>
+
+    [CmdletBinding()]
+    param()
+
+    #Lazy load the config file.
+    Get-KudosClanSettings -clan 'Global' | Out-Null
+
+    $result = New-Object System.Collections.ArrayList($null)
+
+    $clans = $script:config.PSObject.Properties | where {$_.name -ne 'Global'}
+    foreach($c in $clans) {
+        $clan = New-Object -TypeName PSObject
+        $clan |Add-Member -MemberType NoteProperty -Name name -Value $c.name
+        $clan |Add-Member -MemberType NoteProperty -Name Tags -Value $c.value.tags.split(',')
+        $result.Add($clan) |Out-Null
+    }
+
+    return $result
+}
+
 function Get-KudosClanSettings {
     <#
     .SYNOPSIS
         Retrieves the config file data for the specified clan.
 
     .DESCRIPTION
-        Upon first call, this function will load the config file from either the
-        the location specified by the 'config' hash entry in PrivateData or the
-        default location (./kudos.config) if a specified location is not found.
+        Upon first call this function (or any of the linked functions), this
+        function will load the config file from either the location specified
+        by the 'config' hash entry in PrivateData or the  default location
+        (./kudos.config) if a specified location is not found.
 
         Once loaded and for ever subsequent call after that, the data is saved
         in memory. At this time, there is no way to reload an updated config
@@ -29,6 +78,9 @@ function Get-KudosClanSettings {
 
     .LINK
         Get-KudosGlobalSettings
+
+    .LINK
+        Get-KudosClans
      #>
     [CmdletBinding()]
     param(
@@ -38,8 +90,11 @@ function Get-KudosClanSettings {
     )
 
     if($script:config -eq $null) {
-        $configFileLocation = (Join-Path '.' 'kudos.config')
+
+        $path = $MyInvocation.MyCommand.Module.ModuleBase
         $privateData = $MyInvocation.MyCommand.Module.PrivateData
+
+        $configFileLocation = (Join-Path $path 'kudos.config')
 
         Write-Verbose 'Looking for custom defined config file.'
 
@@ -54,7 +109,7 @@ function Get-KudosClanSettings {
             Write-Verbose 'Using found configuration setting.'
             $configFileLocation = $privateData['config']
         }
-        Write-host "Calling: $configFileLocation"
+        Write-Host "Calling: $configFileLocation"
         Private-ReadKudosConfig -location $configFileLocation
     }
 
@@ -67,9 +122,10 @@ function Get-KudosGlobalSettings {
         Retrieves the config file data for the global setting.
 
     .DESCRIPTION
-        Upon first call, this function will load the config file from either the
-        the location specified by the 'config' hash entry in PrivateData or the
-        default location (./kudos.config) if a specified location is not found.
+        Upon first call this function (or any of the linked functions), this
+        function will load the config file from either the location specified
+        by the 'config' hash entry in PrivateData or the  default location
+        (./kudos.config) if a specified location is not found.
 
         Once loaded and for ever subsequent call after that, the data is saved
         in memory. At this time, there is no way to reload an updated config
@@ -84,6 +140,9 @@ function Get-KudosGlobalSettings {
 
     .LINK
         Get-KudosClanSettings
+
+    .LINK
+        Get-KudosClans
      #>
     [CmdletBinding()]
     param()
@@ -100,7 +159,11 @@ function Private-ReadKudosConfig {
     param(
         [Parameter(Mandatory=$true)]
         [ValidateScript({
-            Test-Path -Path $_ -PathType Leaf
+            if(-not (Test-Path -Path $_ -PathType Leaf)) {
+                Throw [System.Management.Automation.ParsingMetadataException] `
+                    "$_ is not a path to a file leaf."
+            }
+            return $true
         })]
         [String] $location
     )

@@ -1,0 +1,28 @@
+#==============================================================================
+# This is a sample config file for ClashKudos.
+# There are several important things to note
+#    1. Lines beginning with # are considered a comment and ignored.
+#    2. Comments can only be on a new line.
+#    3. The global section should never be repeated.
+#    4. Clan sections should always have a unique name.
+#==============================================================================
+
+#==============================================================================
+# The Global section should never be repeated. Values below are samples only
+#==============================================================================
+[Global]
+Token=SuperCell Token Goes Here
+TokenIP=0.0.0.0
+DataDirectory=C:\ClashPlayerData\ClanData\
+DataResult_Hook=https://discord.gg/path/to/webhook
+
+#==============================================================================
+# The sections below this line represent the required configuration parameters
+# for a clan or clan family. For sake of simplicity, both are listed, though
+# only one section is needed if only one clan is supported
+#==============================================================================
+[Clan Name]
+Tags=#1234567
+
+[Clan Family]
+Tags=#abcdef,#ghijkl,#mnopq

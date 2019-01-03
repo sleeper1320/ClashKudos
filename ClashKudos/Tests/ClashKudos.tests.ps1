@@ -56,7 +56,7 @@ Describe "Module Manifest" {
             $result | Should BeNullOrEmpty
         }
 
-        it 'All public functions have reasonably proper help documentation' {
+        it 'All public functions have help documentation' {
             $result = Get-Command -Module ClashKudos | `
                 ? { -not ($_ | Get-Help).Description}
 
