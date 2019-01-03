@@ -2,7 +2,9 @@
 # Updates the Player Data for every clan in the config
 #
 
+#Load the module and remove stale instances to be safe.
 $path = Split-Path -Parent $MyInvocation.MyCommand.Path
+Get-Module ClashKudos | Remove-Module -Force
 Import-Module (Join-Path $path '..' | Join-Path -ChildPath 'ClashKudos.psd1' )
 
 $globalConfig = (Get-KudosGlobalSettings)
