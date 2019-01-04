@@ -22,19 +22,25 @@ function Update-PlayerData {
     $clans = Get-KudosClanTags
 
     foreach($c in $clans) {
+        Write-Verbose "Getting the member list for $($c.tags)"
         $members = Private-GetMembersInClan -Clan $c.tags
-        write-host $members
+        
+        Write-Verbose "Getting member details for $($c.tags)"
         $fulldetails = Private-GetMemberDetails -Members $members
 
         $directory = (Join-Path $config $c.name)
 
         #Create the directory if it doesn't exist
         if(-not(Test-Path -PathType Container $directory)) {
-            New-Item -ItemType Directory -Path $directory
+            Write-Verbose "Creating $directory"
+            New-Item -ItemType Directory -Path $directory |Out-Null
         }
 
         $file = "memberdetails-$today"
-        $fulldetails | Export-Clixml (Join-Path $directory $file)
+        $fullfilepath = (Join-Path $directory $file)
+
+        Write-Verbose "Writing data to $file"
+        $fulldetails | Export-Clixml $fullfilepath
     }
 }
 
