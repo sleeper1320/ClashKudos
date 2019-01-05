@@ -24,7 +24,7 @@ function Update-PlayerData {
     foreach($c in $clans) {
         Write-Verbose "Getting the member list for $($c.tags)"
         $members = Private-GetMembersInClan -Clan $c.tags
-        
+
         Write-Verbose "Getting member details for $($c.tags)"
         $fulldetails = Private-GetMemberDetails -Members $members
 
