@@ -14,6 +14,7 @@
 Token=SuperCell Token Goes Here
 TokenIP=0.0.0.0
 DataDirectory=C:\ClashPlayerData\ClanData\
+DataError_Hook=https://discord.gg/path/to/error/webhook
 DataResult_Hook=https://discord.gg/path/to/webhook
 
 #==============================================================================
@@ -23,6 +24,8 @@ DataResult_Hook=https://discord.gg/path/to/webhook
 #==============================================================================
 [Clan Name]
 Tags=#1234567
+kudos_hook=https://discord.gg/path/to/kudos/webhook
 
 [Clan Family]
 Tags=#abcdef,#ghijkl,#mnopq
+kudos_hook=https://discord.gg/path/to/kudos/webhook

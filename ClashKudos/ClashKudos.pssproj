@@ -34,6 +34,7 @@
     <Compile Include="ClashKudos.psd1" />
     <Compile Include="Config.psm1" />
     <Compile Include="Discord.psm1" />
+    <Compile Include="PlayerDonations.psm1" />
     <Compile Include="SC API.psm1" />
     <Compile Include="Tasks\TestToken.ps1" />
     <Compile Include="Tasks\TestTokenIP.ps1" />
@@ -41,6 +42,7 @@
     <Compile Include="Tests\ClashKudos.tests.ps1" />
     <Compile Include="Tests\Config.tests.ps1" />
     <Compile Include="Tests\Discord.tests.ps1" />
+    <Compile Include="Tests\PlayerDonations.tests.ps1" />
     <Compile Include="Tests\SC API.tests.ps1" />
     <Compile Include="PlayerFetch.psm1" />
     <Compile Include="Tests\PlayerFetch.tests.ps1" />
