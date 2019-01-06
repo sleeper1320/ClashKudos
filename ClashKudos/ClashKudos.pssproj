@@ -36,6 +36,7 @@
     <Compile Include="Discord.psm1" />
     <Compile Include="PlayerDonations.psm1" />
     <Compile Include="SC API.psm1" />
+    <Compile Include="Tasks\CalculateDailyKudos.ps1" />
     <Compile Include="Tasks\TestToken.ps1" />
     <Compile Include="Tasks\TestTokenIP.ps1" />
     <Compile Include="Tasks\UpdatePlayerData.ps1" />
